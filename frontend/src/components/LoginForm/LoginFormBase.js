@@ -8,11 +8,11 @@ class LoginBase extends React.Component {
     this.state = {
       password: "",
       email: "",
-      status: ""
+      status: "",
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     console.log("this.state ", this.state);
@@ -26,16 +26,17 @@ class LoginBase extends React.Component {
 
     // axios({...options}).then().catch()
     // CallApi("post","",data,headers).then().catch()
-    const { email, password } = this.state;
 
-    ApiCaller("post", "/loginCheck", { email, password })
-      .then(res => {
-        console.log("login api working ", res.data);
-        this.setState({ status: res.data });
-      })
-      .catch(err => {
-        console.log("login api error ", err);
-      });
+    // const { email, password } = this.state;
+
+    // ApiCaller("post", "/loginCheck", { email, password })
+    //   .then(res => {
+    //     console.log("login api working ", res.data);
+    //     this.setState({ status: res.data });
+    //   })
+    //   .catch(err => {
+    //     console.log("login api error ", err);
+    //   });
 
     // axios
     //   .post("http://localhost:8000/loginCheck", { email, password })
@@ -48,7 +49,7 @@ class LoginBase extends React.Component {
     //   });
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ status: "" });
     this.setState({ [event.target.name]: event.target.value });
   };

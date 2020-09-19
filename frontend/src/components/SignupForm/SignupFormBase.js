@@ -13,31 +13,31 @@ export default class SignupBase extends React.Component {
       lname: "",
       status: "",
       uexist: "",
-      eexist: ""
+      eexist: "",
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     console.log("this.state ", this.state);
 
-    const { username, password, email, fname, lname } = this.state;
+    // const { username, password, email, fname, lname } = this.state;
 
-    ApiCaller("post", "/signUp", { username, password, email, fname, lname })
-      .then(res => {
-        console.log("signup res ", res.data);
-        if (res.data === "username exist") {
-          this.setState({ uexist: res.data });
-        } else if (res.data === "email exist") {
-          this.setState({ eexist: res.data });
-        } else {
-          this.setState({ status: res.data });
-        }
-      })
-      .catch(err => {
-        console.log("signup err ", err);
-      });
+    // ApiCaller("post", "/signUp", { username, password, email, fname, lname })
+    //   .then(res => {
+    //     console.log("signup res ", res.data);
+    //     if (res.data === "username exist") {
+    //       this.setState({ uexist: res.data });
+    //     } else if (res.data === "email exist") {
+    //       this.setState({ eexist: res.data });
+    //     } else {
+    //       this.setState({ status: res.data });
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.log("signup err ", err);
+    //   });
 
     // axios
     //   .post("http://localhost:8000/signUp", this.state)
@@ -56,7 +56,7 @@ export default class SignupBase extends React.Component {
     //   });
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ eexist: "", uexist: "", status: "" });
     this.setState({ [event.target.name]: event.target.value });
   };
