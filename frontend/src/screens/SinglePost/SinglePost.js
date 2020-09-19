@@ -8,7 +8,9 @@ import Featured from "../../components/Featured/Featured";
 import Post from "../../components/Post/Post";
 
 export default SinglePost = () => {
-  const [name,useName]=useState();
+  const [name,useName]=useState(
+    
+  );
   setName("");
   useEffect(()=>{
 
