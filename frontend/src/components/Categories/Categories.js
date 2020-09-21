@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Categories extends Component {
-  render() {
+export default function Categories () {
     return (
       <div className="rght_cate">
         <div className="rght_cate_hd" id="rght_cat_bg">
@@ -53,5 +52,4 @@ export default class Categories extends Component {
         </div>
       </div>
     );
-  }
 }

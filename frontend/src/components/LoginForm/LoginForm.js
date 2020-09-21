@@ -1,15 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import Base from "./LoginFormBase";
+import ApiCaller from '../../Utilis/ApiCaller';
 
-export default class Profile extends Base {
-  render() {
+export default function Profile (props) {
+
+  const [email, setemail] = useState('');
+  const [password, setpassword] = useState('');
+  const [status, setstatus] = useState('');
+
+  const handleSubmit= (e) =>{
+    e.preventDefault();
+
+    console.log("email: ", email);
+    console.log("password: ", password);
+
+    ApiCaller("post", "/loginCheck", { email, password })
+      .then(res => {
+        console.log("login api working ", res.data);
+        setstatus(res.data)
+
+        if(res.data === 'welcome'){
+          console.log("props.history ", props.history);
+          props.history.push('/timeline')
+        }
+      })
+      .catch(err => {
+        console.log("login api error ", err);
+      });
+  }
+
     return (
       <div className="content_rgt">
         <div className="login_sec">
           <h1>Log In</h1>
-          <form onSubmit={this.handleSubmit}>
-            <h4 style={{ color: "red" }}>{this.state.status}</h4>
+          <form onSubmit={handleSubmit}>
+            {/* <h4 style={{ color: "red" }}>{status}</h4> */}
             <ul>
               <li>
                 <span>Email-ID</span>
@@ -17,7 +42,8 @@ export default class Profile extends Base {
                   type="email"
                   name="email"
                   placeholder="Enter your email"
-                  onChange={this.handleChange}
+                  value={email}
+                  onChange={e => setemail(e.target.value)}
                   required
                 />
               </li>
@@ -27,7 +53,8 @@ export default class Profile extends Base {
                   type="password"
                   name="password"
                   placeholder="Enter your password"
-                  onChange={this.handleChange}
+                  value={password}
+                  onChange={e => setpassword(e.target.value)}
                   required
                 />
               </li>
@@ -48,5 +75,4 @@ export default class Profile extends Base {
         </div>
       </div>
     );
-  }
 }

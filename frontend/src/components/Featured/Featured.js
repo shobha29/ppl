@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Featured extends Component {
-  render() {
+export default function Featured () {
     return (
       <div className="rght_cate">
         <div className="rght_cate_hd" id="opn_cat_bg">
@@ -38,5 +37,4 @@ export default class Featured extends Component {
         </div>
       </div>
     );
-  }
 }

@@ -1,31 +1,65 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
-import Base from "./SignupFormBase";
+import ApiCaller from "../../Utilis/ApiCaller"
 
-export default class SignupForm extends Base {
-  render() {
+const SignupForm = () => {
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  // const [status, setStatus] = setState("");
+  // const [uexist, setUexist] = setState("");
+  // const [eexist, setEexist] = setState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("username: ", username);
+    console.log("password: ", password);
+    console.log("email: ", email);
+    console.log("fname: ", fname);
+    console.log("lname: ", lname);
+
+    ApiCaller("post", "/signUp", { username, password, email, fname, lname })
+      .then(res => {
+        console.log("signup res ", res.data);
+        // if (res.data === "username exist") {
+        //   setUexist(res.data);
+        // } else if (res.data === "email exist") {
+        //   setEexist(res.data);
+        // } else {
+        //   setStatus(res.data);
+        // }
+      })
+      .catch(err => {
+        console.log("signup err ", err);
+      });
+  }
+
     return (
       <div className="content_rgt">
         <div className="register_sec">
           <h1>Create An Account</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={handleSubmit}>
             <ul>
-              <li>
-                <h6 style={{ color: "red" }}>{this.state.status}</h6>
-              </li>
+              {/* <li>
+                <h6 style={{ color: "red" }}>{status}</h6>
+              </li> */}
               <li>
                 <span>Username</span>
-                <p style={{ color: "red" }}>{this.state.uexist}</p>
+                {/* <p style={{ color: "red" }}>{uexist}</p> */}
                 <input
-                  style={
-                    this.state.uexist === "username exist"
-                      ? { border: "1px solid red" }
-                      : {}
-                  }
+                  // style={
+                  //   uexist === "username exist"
+                  //     ? { border: "1px solid red" }
+                  //     : {}
+                  // }
                   type="text"
                   name="username"
                   placeholder="Enter your username"
-                  onChange={this.handleChange}
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
                   required
                 />
               </li>
@@ -35,23 +69,25 @@ export default class SignupForm extends Base {
                   type="password"
                   name="password"
                   placeholder="Enter your password"
-                  onChange={this.handleChange}
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                   required
                 />
               </li>
               <li>
                 <span>Email</span>
-                <p style={{ color: "red" }}>{this.state.eexist}</p>
+                {/* <p style={{ color: "red" }}>{eexist}</p> */}
                 <input
-                  style={
-                    this.state.eexist === "email exist"
-                      ? { border: "1px solid red" }
-                      : {}
-                  }
+                  // style={
+                  //   eexist === "email exist"
+                  //     ? { border: "1px solid red" }
+                  //     : {}
+                  // }
                   type="email"
                   name="email"
                   placeholder="Enter your email"
-                  onChange={this.handleChange}
+                  ovalue={email}
+                  onChange={e => setEmail(e.target.value)}
                   required
                 />
               </li>
@@ -61,7 +97,8 @@ export default class SignupForm extends Base {
                   type="text"
                   name="fname"
                   placeholder="Enter your first name"
-                  onChange={this.handleChange}
+                  value={fname}
+                  onChange={e => setFname(e.target.value)}
                   required
                 />
               </li>
@@ -71,7 +108,8 @@ export default class SignupForm extends Base {
                   type="text"
                   name="lname"
                   placeholder="Enter your last name"
-                  onChange={this.handleChange}
+                  value={lname}
+                  onChange={e => setLname(e.target.value)}
                   required
                 />
               </li>
@@ -91,5 +129,7 @@ export default class SignupForm extends Base {
         </div>
       </div>
     );
-  }
+ 
 }
+
+export default SignupForm;

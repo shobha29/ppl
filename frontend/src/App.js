@@ -8,7 +8,6 @@ import SinglePost from "./screens/SinglePost/SinglePost";
 export default class App extends Component {
   render() {
     return (
-      // <Signup />
       <Router>
         <div>
           <Switch>

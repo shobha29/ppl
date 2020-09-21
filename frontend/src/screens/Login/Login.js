@@ -4,14 +4,13 @@ import Footer from "../../components/Footer/Footer";
 import Form from "../../components/LoginForm/LoginForm";
 import Content from "../../components/Content/Content";
 
-export default class Login extends React.Component {
-  render() {
+export default function Login(props) {
     return (
       <div>
         <Header />
         <div className="container">
           <div className="content">
-            <Form />
+            <Form {...props} />
             <Content />
           </div>
         </div>
@@ -19,5 +18,4 @@ export default class Login extends React.Component {
         <Footer />
       </div>
     );
-  }
 }

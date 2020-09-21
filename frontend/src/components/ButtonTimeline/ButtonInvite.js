@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class ButtonInvite extends Component {
-  render() {
+export default function ButtonInvite () {
     return (
       <div className="rght_btn">
         {" "}
@@ -14,5 +13,4 @@ export default class ButtonInvite extends Component {
         <a href="#">Invite Friends</a>{" "}
       </div>
     );
-  }
 }

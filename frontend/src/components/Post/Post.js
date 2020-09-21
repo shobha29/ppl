@@ -1,22 +1,17 @@
 import React from "react";
 
-export default class Post extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+export default function Post(props) {
     return (
       <div className="contnt_2">
         <div className="div_a">
-          <div className="div_title">{this.props.content.title}</div>
+          <div className="div_title">{props.content.title}</div>
           <div className="btm_rgt">
-            <div className="btm_arc">{this.props.content.category}</div>
+            <div className="btm_arc">{props.content.category}</div>
           </div>
           <div className="div_top">
             <div className="div_top_lft">
               <img src="images/img_6.png" />
-              {this.props.content.username}
+              {props.content.username}
             </div>
             <div className="div_top_rgt">
               <span className="span_date">02 Jan 2014</span>
@@ -24,7 +19,7 @@ export default class Post extends React.Component {
             </div>
           </div>
           <div className="div_image">
-            <img src={this.props.content.image} alt="pet" />
+            <img src={props.content.image} alt="pet" />
           </div>
           <div className="div_btm">
             <div className="btm_list">
@@ -67,5 +62,4 @@ export default class Post extends React.Component {
         </div>
       </div>
     );
-  }
 }

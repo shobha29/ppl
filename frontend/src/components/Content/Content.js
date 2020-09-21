@@ -1,7 +1,6 @@
 import React from "react";
 
-export default class Content extends React.Component {
-  render() {
+export default function Content () {
     return (
       <div className="content_lft">
         <h1>Welcome from PPL!</h1>
@@ -15,5 +14,4 @@ export default class Content extends React.Component {
         <img src="images/img_9.png" alt="" />
       </div>
     );
-  }
 }

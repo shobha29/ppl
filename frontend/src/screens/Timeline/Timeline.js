@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import Base from "./TimelineBase";
+import React, { useState } from "react";
 import Post from "../../components/Post/Post";
 import Footer from "../../components/Footer/Footer";
 import Profile from "../../components/Profile/Profile";
@@ -9,8 +8,9 @@ import ButtonInvite from "../../components/ButtonTimeline/ButtonInvite";
 import Categories from "../../components/Categories/Categories";
 import Featured from "../../components/Featured/Featured";
 
-export default class Timeline extends Base {
-  render() {
+export default function Timeline (props) {
+
+    console.log("props history ", props.history);
     return (
       <div>
         {/* <h1 style={{fontSize: '72px'}}>{this.state.choose}</h1> */}
@@ -64,5 +64,4 @@ export default class Timeline extends Base {
         <Footer />
       </div>
     );
-  }
 }

@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
-export default class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+export default function Navbar() {
     return (
       <div>
         <meta charSet="utf-8" />
@@ -143,5 +139,4 @@ export default class Navbar extends React.Component {
         </div>
       </div>
     );
-  }
 }
