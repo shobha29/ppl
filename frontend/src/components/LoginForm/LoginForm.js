@@ -21,6 +21,7 @@ export default function Profile (props) {
 
         if(res.data === 'welcome'){
           console.log("props.history ", props.history);
+          localStorage.setItem("email", email);
           props.history.push('/timeline')
         }
       })

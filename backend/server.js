@@ -133,7 +133,7 @@ app.post("/loginCheck", (req, resp) => {
               if (result.length == 0) {
                 resp.send("email/password is incorrect");
               } else {
-                resp.send(result[0].email);
+                resp.send('welcome');
                 // console.log("successfully logged in");
               }
             }
