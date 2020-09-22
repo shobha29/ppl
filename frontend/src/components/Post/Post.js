@@ -1,10 +1,11 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 export default function Post(props) {
     return (
       <div className="contnt_2">
         <div className="div_a">
-          <div className="div_title">{props.content.title}</div>
+          <div className="div_title"><Link to="/singlepost">{props.content.title}</Link></div>
           <div className="btm_rgt">
             <div className="btm_arc">{props.content.category}</div>
           </div>
@@ -19,7 +20,9 @@ export default function Post(props) {
             </div>
           </div>
           <div className="div_image">
+          <Link to="/singlepost">
             <img src={props.content.image} alt="pet" />
+            </Link>
           </div>
           <div className="div_btm">
             <div className="btm_list">
@@ -49,12 +52,12 @@ export default function Post(props) {
                   </a>
                 </li>
                 <li>
-                  <a href="#">
+                  <Link to="/singlepost">
                     <span className="btn_icon">
                       <img src="images/icon_004.png" alt="share" />
                     </span>
                     4 Comments
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

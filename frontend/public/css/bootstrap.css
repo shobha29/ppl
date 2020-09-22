@@ -6652,6 +6652,28 @@ a.badge:focus {
   height: auto;
   margin-right: 7%;
 }
+.list_1 ul li button {
+  color: #000;
+  float: right;
+  width: 100%;
+  color: #fff;
+  box-shadow: 0 1px 0 #ffcc30 inset;
+  background: #f3891f;
+  background: -moz-linear-gradient(top, #f3891f 0%, #ec6a14 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #f3891f),
+    color-stop(100%, #ec6a14)
+  );
+  background: -webkit-linear-gradient(top, #f3891f 0%, #ec6a14 100%);
+  background: -o-linear-gradient(top, #f3891f 0%, #ec6a14 100%);
+  background: -ms-linear-gradient(top, #f3891f 0%, #ec6a14 100%);
+  background: linear-gradient(to bottom, #f3891f 0%, #ec6a14 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3891f', endColorstr='#ec6a14', GradientType=0 );
+  border: 1px solid #ee830d;
+}
 .post_div {
   float: left;
   padding: 15px 9px 15px 9px;

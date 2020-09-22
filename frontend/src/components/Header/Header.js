@@ -112,9 +112,9 @@ export default function Navbar() {
                 <li>
                   <a href="#"> Resuse Market </a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#"> Lost and Found</a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
