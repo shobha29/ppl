@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Post from "../../components/Post/Post";
-import Footer from "../../components/Footer/Footer";
 import Profile from "../../components/Profile/Profile";
-import Header from "../../components/Header/Header";
 import ButtonUpload from "../../components/ButtonTimeline/ButtonUpload";
 import ButtonInvite from "../../components/ButtonTimeline/ButtonInvite";
 import Categories from "../../components/Categories/Categories";
@@ -13,14 +11,11 @@ export default function Timeline(props) {
 
   const Logout = () => {
     localStorage.clear();
-    props.history.push("/login");
+    props.history.push("/");
   };
 
   return (
     <div>
-      {/* <h1 style={{fontSize: '72px'}}>{this.state.choose}</h1> */}
-
-      <Header />
       <div className="container">
         <div className="content">
           <div className="content_rgt">
@@ -72,7 +67,6 @@ export default function Timeline(props) {
         </div>
         <div className="clear" />
       </div>
-      <Footer />
     </div>
   );
 }

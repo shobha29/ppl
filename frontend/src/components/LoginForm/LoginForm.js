@@ -13,7 +13,7 @@ export default function LoginForm(props) {
     console.log("email: ", email);
     console.log("password: ", password);
 
-    ApiCaller("post", "/loginCheck", { email, password })
+    ApiCaller("post", "/auth/login", { email, password })
       .then((res) => {
         console.log("login api working ", res.data);
         setStatus(res.data);
@@ -35,7 +35,7 @@ export default function LoginForm(props) {
       <div className="login_sec">
         <h1>Log In</h1>
         <form onSubmit={handleSubmit}>
-          <h4 style={{ color: "red" }}>{status}</h4>
+          <p style={{ color: "red" }}>{status}</p>
           <ul>
             <li>
               <span>Email-ID</span>
@@ -44,7 +44,7 @@ export default function LoginForm(props) {
                 name="email"
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {setEmail(e.target.value); setStatus('') }}
                 required
               />
             </li>
@@ -55,7 +55,7 @@ export default function LoginForm(props) {
                 name="password"
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {setPassword(e.target.value); setStatus('')}}
                 required
               />
             </li>
@@ -71,7 +71,7 @@ export default function LoginForm(props) {
         </form>
         <div className="addtnal_acnt">
           I do not have any account yet.
-          <Link to="/">Create My Account Now !</Link>
+          <Link to="/signup">Create My Account Now !</Link>
         </div>
       </div>
     </div>

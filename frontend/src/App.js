@@ -1,46 +1,15 @@
 import React, { Component } from "react";
-import Login from "./screens/Login/Login";
-import Signup from "./screens/Signup/Signup";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import Timeline from "./screens/Timeline/Timeline";
-import SinglePost from "./screens/SinglePost/SinglePost";
-// import Example from "./Example"
+import Navigate from './components/Routing/Navigate';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
-export default class App extends Component {
-  render() {
+
+export default function App() {
     return (
-      <Router>
-        <div>
-          <Switch>
-            <AuthRoute path="/" exact component={Signup} />
-            <AuthRoute path="/login" component={Login} />
-            <PrivateRoute path="/timeline" component={Timeline} />
-            <PrivateRoute path="/singlepost" component={SinglePost} />
-          </Switch>
-        </div>
-      </Router>
+      <>
+      <Header />
+        <Navigate />
+        <Footer />
+      </>
     );
-  }
-}
-
-function PrivateRoute({component: Component, ...rest}) {
-  return (
-    <Route {...rest} render={props => (
-        localStorage.getItem('email') ?
-            <Component {...props} />
-        : <Redirect to="/login" />
-    )} />
-);
-
-}
-
-function AuthRoute({component: Component, ...rest}) {
-  return (
-    <Route {...rest} render={props => (
-        !localStorage.getItem('email') ?
-            <Component {...props} />
-        : <Redirect to="/timeline" />
-    )} />
-);
-
 }

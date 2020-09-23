@@ -1,17 +1,16 @@
 import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import ApiCaller from "../../Utilis/ApiCaller"
+import {withRouter} from 'react-router';
 
-const SignupForm = () => {
+const SignupForm = (props) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
-  // const [status, setStatus] = setState("");
-  // const [uexist, setUexist] = setState("");
-  // const [eexist, setEexist] = setState("");
+  const [status, setStatus] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,16 +20,15 @@ const SignupForm = () => {
     console.log("fname: ", fname);
     console.log("lname: ", lname);
 
-    ApiCaller("post", "/signUp", { username, password, email, fname, lname })
+    ApiCaller("post", "/auth/signUp", { username, password, email, fname, lname })
       .then(res => {
-        console.log("signup res ", res.data);
-        // if (res.data === "username exist") {
-        //   setUexist(res.data);
-        // } else if (res.data === "email exist") {
-        //   setEexist(res.data);
-        // } else {
-        //   setStatus(res.data);
-        // }
+        console.log("signup res ", typeof(res.data), res.data);
+        if(res.data == 1){
+          props.history.push("/");
+        }else{
+          setStatus(res.data);
+          console.log('status', status);
+        }
       })
       .catch(err => {
         console.log("signup err ", err);
@@ -43,23 +41,20 @@ const SignupForm = () => {
           <h1>Create An Account</h1>
           <form onSubmit={handleSubmit}>
             <ul>
-              {/* <li>
-                <h6 style={{ color: "red" }}>{status}</h6>
-              </li> */}
               <li>
                 <span>Username</span>
-                {/* <p style={{ color: "red" }}>{uexist}</p> */}
+                {status === 'userexist' ? <p style={{ color: "red" }}>Username exist</p> : ''}
                 <input
-                  // style={
-                  //   uexist === "username exist"
-                  //     ? { border: "1px solid red" }
-                  //     : {}
-                  // }
+                  style={
+                    status === "userexist"
+                      ? { border: "1px solid red" }
+                      : {}
+                  }
                   type="text"
                   name="username"
                   placeholder="Enter your username"
                   value={username}
-                  onChange={e => setUsername(e.target.value)}
+                  onChange={e => {setUsername(e.target.value); setStatus('')}}
                   required
                 />
               </li>
@@ -70,24 +65,24 @@ const SignupForm = () => {
                   name="password"
                   placeholder="Enter your password"
                   value={password}
-                  onChange={e => setPassword(e.target.value)}
+                  onChange={e => {setPassword(e.target.value); setStatus('')}}
                   required
                 />
               </li>
               <li>
                 <span>Email</span>
-                {/* <p style={{ color: "red" }}>{eexist}</p> */}
+                {status === 'emailexist' ? <p style={{ color: "red" }}>email exist</p> : ''}
                 <input
-                  // style={
-                  //   eexist === "email exist"
-                  //     ? { border: "1px solid red" }
-                  //     : {}
-                  // }
+                  style={
+                    status === "emailexist"
+                      ? { border: "1px solid red" }
+                      : {}
+                  }
                   type="email"
                   name="email"
                   placeholder="Enter your email"
                   ovalue={email}
-                  onChange={e => setEmail(e.target.value)}
+                  onChange={e => {setEmail(e.target.value); setStatus('')}}
                   required
                 />
               </li>
@@ -98,7 +93,7 @@ const SignupForm = () => {
                   name="fname"
                   placeholder="Enter your first name"
                   value={fname}
-                  onChange={e => setFname(e.target.value)}
+                  onChange={e => {setFname(e.target.value); setStatus('')}}
                   required
                 />
               </li>
@@ -109,7 +104,7 @@ const SignupForm = () => {
                   name="lname"
                   placeholder="Enter your last name"
                   value={lname}
-                  onChange={e => setLname(e.target.value)}
+                  onChange={e => {setLname(e.target.value); setStatus('')}}
                   required
                 />
               </li>
@@ -124,7 +119,7 @@ const SignupForm = () => {
           </form>
           <div className="addtnal_acnt">
             I already have an account.
-            <Link to="/login">Login My Account !</Link>
+            <Link to="/">Login My Account !</Link>
           </div>
         </div>
       </div>
@@ -132,4 +127,4 @@ const SignupForm = () => {
  
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);

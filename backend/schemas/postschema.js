@@ -4,14 +4,14 @@ var postSchema = mongoose.Schema(
   {
     filename: { type: String },
     path: { type: String },
-    // username: { type: String },
+    username: { type: String },
     category: { type: String },
-    // date: { type: String },
-    description: { type: String }
-    // image: { type: String },
-    // likes: { type: Number },
-    // comments: { type: String },
-    // Flag: { type: String }
+    // date: Date.now(),
+    description: { type: String },
+    image: { type: String },
+    likes: [],
+    comments: [],
+    Flag: []
   },
   { versionKey: false }
 );

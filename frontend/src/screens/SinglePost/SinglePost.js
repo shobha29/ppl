@@ -1,6 +1,4 @@
 import React, {useState} from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
 import ButtonInvite from "../../components/ButtonTimeline/ButtonInvite";
 import ButtonUpload from "../../components/ButtonTimeline/ButtonUpload";
 import Categories from "../../components/Categories/Categories";
@@ -9,11 +7,16 @@ import Post from "../../components/Post/Post";
 import Comments from "../../components/Comments/Reply";
 import WriteComments from "../../components/Comments/WriteComment";
 
-export default function SinglePost() {
+export default function SinglePost(props) {
+  console.log("props history signlepost ", props.history);
+
+  const Logout = () => {
+    localStorage.clear();
+    props.history.push("/");
+  };
 
   return (
     <div>
-      <Header />
       <div className="container">
         <div className="content">
           <div className="content_rgt">
@@ -23,6 +26,24 @@ export default function SinglePost() {
             <Featured />
           </div>
           <div className="content_lft">
+              <div className="list_1">
+                <ul>
+                  <li>
+                    <input type="checkbox" className="chk_bx" />
+                    Friends
+                  </li>
+                  <li>
+                    <input type="checkbox" className="chk_bx" />
+                    Flaged
+                  </li>
+
+                  <li style={{ float: 'right' }}>
+                    <button className="logout" onClick={Logout}>
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
             <Post
               content={{
                 title: "these cats are cute",
@@ -37,8 +58,6 @@ export default function SinglePost() {
                 <Comments />
                 <Comments />
                 <Comments />
-                <Comments />
-                <Comments />
                 <WriteComments />
               </ul>
               {/* <div className="view_div">
@@ -49,7 +68,6 @@ export default function SinglePost() {
         </div>
         <div className="clear" />
       </div>
-      <Footer />
     </div>
   );
 }
