@@ -1,6 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 
 export default function Navbar() {
+  // const [localCheck, setlocalCheck] = useState(false);
+
+  // const Check => {
+    
+  // }
+
     return (
       <div>
         <meta charSet="utf-8" />

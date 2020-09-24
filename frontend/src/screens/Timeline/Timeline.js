@@ -1,18 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Post from "../../components/Post/Post";
 import Profile from "../../components/Profile/Profile";
 import ButtonUpload from "../../components/ButtonTimeline/ButtonUpload";
 import ButtonInvite from "../../components/ButtonTimeline/ButtonInvite";
 import Categories from "../../components/Categories/Categories";
 import Featured from "../../components/Featured/Featured";
+import ApiCaller from "../../Utilis/ApiCaller";
 
 export default function Timeline(props) {
-  console.log("props history ", props.history);
+  // console.log("props history ", props.history);
+  const [data, setData] = useState('')
 
   const Logout = () => {
     localStorage.clear();
     props.history.push("/");
   };
+
+  // async function fetchData() {
+  //   const res = await fetch("https://localhost:8000/dash/showPost", localStorage.getItem('email'))
+  //   .then(res => res.json())
+  //     .then(
+  //       (result) => {
+  //         setData(result)
+  //       },
+  //       (error) => {
+  //         console.log('fetch error', error)
+  //       }
+  //     )
+  // }
+
+  useEffect(() => {
+    console.log("useeffect..........");
+    // console.log(localStorage.email);
+    
+    ApiCaller("post", "/dash/showPost", { email:localStorage.email})
+      .then((res) => {
+        console.log("showpost api working ", res);
+        setData(res)
+      })
+      .catch((err) => {
+        console.log("showpost api error ", err);
+      });
+  }, []);
 
   return (
     <div>
@@ -38,7 +67,7 @@ export default function Timeline(props) {
                     Flaged
                   </li>
 
-                  <li style={{ float: 'right' }}>
+                  <li style={{ float: "right" }}>
                     <button className="logout" onClick={Logout}>
                       Logout
                     </button>
@@ -47,6 +76,7 @@ export default function Timeline(props) {
               </div>
               <Profile />
             </div>
+            {data? <Post content={data} /> : ''}
             <Post
               content={{
                 title: "these cats are cute",

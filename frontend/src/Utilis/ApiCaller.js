@@ -13,14 +13,14 @@ function ApiCaller(method, url, data) {
   };
   return new Promise((resolve, reject) => {
     console.log("option", option);
-    axios({ ...option })
+    axios({...option })
       .then(res => {
-        resolve(res);
         console.log("response ", res.data);
+        resolve(res);
       })
       .catch(err => {
-        reject(err);
         console.log("err is ", err);
+        reject(err);
       });
   });
 

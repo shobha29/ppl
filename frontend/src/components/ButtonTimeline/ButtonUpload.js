@@ -6,22 +6,24 @@ export default function ButtonUpload () {
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [username, setUsername] = useState('Shobha Shrivastava');
+  const [email, setEmail] = useState('');
   
   const handleSubmit = (e) => {
+    setUpload(false);
+    setEmail(localStorage.getItem('email'))
     e.preventDefault();
 
-    console.log("file", e.file);
+    console.log("file",file);
     console.log("description", description);
     console.log("category", category);
-    console.log("username", username);
+    console.log("email", email);
 
     const formData = new FormData();
 
     formData.append("avatar", file);
     formData.append("description", description);
     formData.append("category", category);
-    formData.append("username", username);
+    formData.append("email", email);
 
     console.log("formData: ", formData);
 
@@ -48,7 +50,7 @@ export default function ButtonUpload () {
           <span className="btn_sep">
             <img src="images/btn_sep.png" alt="sep" />
           </span>
-          <a onClick={temp}>Upload Post</a>
+          <a href='javascript:void(0)' onClick={temp}>Upload Post</a>
         </div>
         <div
           style={upload ? { display: "block" } : { display: "none" }}

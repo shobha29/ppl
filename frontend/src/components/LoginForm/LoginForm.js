@@ -18,7 +18,7 @@ export default function LoginForm(props) {
         console.log("login api working ", res.data);
         setStatus(res.data);
 
-        if (res.data === "welcome") {
+        if (res.data == 1) {
           console.log("props.history ", props.history);
 
           localStorage.setItem("email", email);
@@ -44,7 +44,10 @@ export default function LoginForm(props) {
                 name="email"
                 placeholder="Enter your email"
                 value={email}
-                onChange={(e) => {setEmail(e.target.value); setStatus('') }}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setStatus("");
+                }}
                 required
               />
             </li>
@@ -55,7 +58,10 @@ export default function LoginForm(props) {
                 name="password"
                 placeholder="Enter your password"
                 value={password}
-                onChange={(e) => {setPassword(e.target.value); setStatus('')}}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setStatus("");
+                }}
                 required
               />
             </li>

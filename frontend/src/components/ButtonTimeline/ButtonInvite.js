@@ -10,7 +10,7 @@ export default function ButtonInvite () {
         <span className="btn_sep">
           <img src="images/btn_sep.png" alt="sep" />
         </span>{" "}
-        <a href="#">Invite Friends</a>{" "}
+        <a href='javascript:void(0)'>Invite Friends</a>{" "}
       </div>
     );
 }
