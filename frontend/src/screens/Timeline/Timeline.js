@@ -9,39 +9,31 @@ import ApiCaller from "../../Utilis/ApiCaller";
 
 export default function Timeline(props) {
   // console.log("props history ", props.history);
-  const [data, setData] = useState('')
+  const [post, setPost] = useState([]);
+
+  // var post;
 
   const Logout = () => {
     localStorage.clear();
     props.history.push("/");
   };
 
-  // async function fetchData() {
-  //   const res = await fetch("https://localhost:8000/dash/showPost", localStorage.getItem('email'))
-  //   .then(res => res.json())
-  //     .then(
-  //       (result) => {
-  //         setData(result)
-  //       },
-  //       (error) => {
-  //         console.log('fetch error', error)
-  //       }
-  //     )
-  // }
-
   useEffect(() => {
     console.log("useeffect..........");
     // console.log(localStorage.email);
-    
-    ApiCaller("post", "/dash/showPost", { email:localStorage.email})
+
+    ApiCaller("post", "/dash/showPost", { email: localStorage.email })
       .then((res) => {
-        console.log("showpost api working ", res);
-        setData(res)
+        console.log("showpost api working ", res.data);
+        setPost(res.data);
+        // console.log('post ', post);
       })
       .catch((err) => {
         console.log("showpost api error ", err);
       });
-  }, []);
+  },[]);
+
+  // console.log('post ', post);
 
   return (
     <div>
@@ -76,8 +68,8 @@ export default function Timeline(props) {
               </div>
               <Profile />
             </div>
-            {data? <Post content={data} /> : ''}
-            <Post
+            {post.length && post.map(postItem => (<Post content={postItem} />))}
+            {/* <Post
               content={{
                 title: "these cats are cute",
                 category: "Cats",
@@ -92,7 +84,7 @@ export default function Timeline(props) {
                 username: "Steave Waugh",
                 image: "images/lft_img1.png",
               }}
-            />
+            /> */}
           </div>
         </div>
         <div className="clear" />

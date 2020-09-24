@@ -16,6 +16,8 @@ mongoose.connect("mongodb://localhost:27017/ppl", {
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static("uploads"))
+
 
 app.use("/auth", AuthRoute);
 app.use("/dash", DashRoute);

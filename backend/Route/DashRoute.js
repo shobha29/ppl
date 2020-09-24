@@ -9,7 +9,7 @@ var storage = multer.diskStorage({
     cb(null, "./uploads");
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + "-" + Date.now());
+    cb(null,"http://127.0.0.1:8000/" + file.fieldname + "-" + Date.now());
   },
   // description: function (req, file, cb) {
   //   cb(null, req.body.description);
