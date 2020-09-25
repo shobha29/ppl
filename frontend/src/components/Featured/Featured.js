@@ -9,7 +9,7 @@ export default function Featured () {
         <div className="sub_dwn">
           <div className="feat_sec">
             <div className="feat_sec_img">
-              <img src="images/feat_img1.png" alt="image" />
+              <img src="/images/feat_img1.png" alt="/image" />
             </div>
             <div className="feat_txt">Lorem Ipusum Text</div>
             <div className="btm_rgt">
@@ -18,7 +18,7 @@ export default function Featured () {
           </div>
           <div className="feat_sec">
             <div className="feat_sec_img">
-              <img src="images/feat_img2.png" alt="image" />
+              <img src="/images/feat_img2.png" alt="/image" />
             </div>
             <div className="feat_txt">Lorem Ipusum Text</div>
             <div className="btm_rgt">
@@ -27,7 +27,7 @@ export default function Featured () {
           </div>
           <div className="feat_sec">
             <div className="feat_sec_img">
-              <img src="images/feat_img3.png" alt="image" />
+              <img src="/images/feat_img3.png" alt="/image" />
             </div>
             <div className="feat_txt">Lorem Ipusum Text</div>
             <div className="btm_rgt">

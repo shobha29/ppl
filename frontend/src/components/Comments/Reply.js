@@ -7,7 +7,7 @@ const Reply = () => {
     <li>
                   <div className="list_image">
                     <div className="image_sec">
-                      <img src="images/post_img.png" />
+                      <img src="/images/post_img.png" />
                     </div>
                     <div className="image_name">Bharat</div>
                   </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 export default function Profile() {
   return (
@@ -41,21 +42,21 @@ export default function Profile() {
       <div className="timeline_div2">
         <ul>
           <li>
-            <a href="#" className="active">
+            <a href="javascript:void(0)" className="active">
               Timeline{" "}
             </a>
           </li>
           <li>
-            <a href="#">About </a>
+            <a href="javascript:void(0)" >About </a>
           </li>
           <li>
-            <a href="#">Album</a>
+            <a href="javascript:void(0)">Album</a>
           </li>
           <li>
-            <a href="#"> Pets</a>
+            <a href="javascript:void(0)"> Pets</a>
           </li>
           <li>
-            <a href="#">My Uploads </a>
+            <Link to='/myuploads'>My Uploads </Link>
           </li>
         </ul>
       </div>

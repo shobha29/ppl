@@ -11,7 +11,7 @@ export default function Categories () {
             <li>
               <a href="#">
                 <span className="list_icon">
-                  <img src="images/icon_01.png" alt="up" />
+                  <img src="/images/icon_01.png" alt="up" />
                 </span>{" "}
                 CATS
               </a>
@@ -19,7 +19,7 @@ export default function Categories () {
             <li>
               <a href="#">
                 <span className="list_icon">
-                  <img src="images/icon_02.png" alt="up" />
+                  <img src="/images/icon_02.png" alt="up" />
                 </span>{" "}
                 Dogs
               </a>
@@ -27,7 +27,7 @@ export default function Categories () {
             <li>
               <a href="#">
                 <span className="list_icon">
-                  <img src="images/icon_03.png" alt="up" />
+                  <img src="/images/icon_03.png" alt="up" />
                 </span>{" "}
                 Birds
               </a>
@@ -35,7 +35,7 @@ export default function Categories () {
             <li>
               <a href="#">
                 <span className="list_icon">
-                  <img src="images/icon_04.png" alt="up" />
+                  <img src="/images/icon_04.png" alt="up" />
                 </span>{" "}
                 Rabbit
               </a>
@@ -43,7 +43,7 @@ export default function Categories () {
             <li>
               <a href="#">
                 <span className="list_icon">
-                  <img src="images/icon_05.png" alt="up" />
+                  <img src="/images/icon_05.png" alt="up" />
                 </span>{" "}
                 Others
               </a>

@@ -6,12 +6,13 @@ export default function ButtonUpload () {
   const [file, setFile] = useState(null);
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(localStorage.email);
   
   const handleSubmit = (e) => {
-    setUpload(false);
-    setEmail(localStorage.getItem('email'))
     e.preventDefault();
+
+    // setUpload(false);
+    setEmail(localStorage.getItem('email'))
 
     console.log("file",file);
     console.log("description", description);
@@ -45,10 +46,10 @@ export default function ButtonUpload () {
         <div className="rght_btn">
           
           <span className="rght_btn_icon">
-            <img src="images/btn_iconb.png" alt="up" />
+            <img src="/images/btn_iconb.png" alt="up" />
           </span>
           <span className="btn_sep">
-            <img src="images/btn_sep.png" alt="sep" />
+            <img src="/images/btn_sep.png" alt="sep" />
           </span>
           <a href='javascript:void(0)' onClick={temp}>Upload Post</a>
         </div>

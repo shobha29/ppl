@@ -12,10 +12,9 @@ function ApiCaller(method, url, data) {
     }
   };
   return new Promise((resolve, reject) => {
-    console.log("option", option);
+    // console.log("option", option);
     axios({...option })
       .then(res => {
-        console.log("response ", res.data);
         resolve(res);
       })
       .catch(err => {
@@ -23,15 +22,6 @@ function ApiCaller(method, url, data) {
         reject(err);
       });
   });
-
-  // axios
-  //   .post(BaseUrl + url, data)
-  //   .then(res => {
-  //     console.log("axios working ");
-  //   })
-  //   .catch(err => {
-  //     console.log("axios err ", err);
-  //   });
 }
 
 export default ApiCaller;

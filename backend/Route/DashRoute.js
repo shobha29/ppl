@@ -9,7 +9,7 @@ var storage = multer.diskStorage({
     cb(null, "./uploads");
   },
   filename: function (req, file, cb) {
-    cb(null,"http://127.0.0.1:8000/" + file.fieldname + "-" + Date.now());
+    cb(null, new Date + '.jpeg');
   },
   // description: function (req, file, cb) {
   //   cb(null, req.body.description);
@@ -22,29 +22,53 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.post("/uploadpost", upload.single("avatar"), async (req, resp) => {
-  console.log("upload is working");
+
+  // console.log("upload is working",req.body);
   const data = {
     filename: req.file.filename,
     path: req.file.path,
     email: req.body.email,
     category: req.body.category,
     description: req.body.description,
-    date: new Date(),
+    date: new Date,
   };
   try {
     const call = await dash.uploadPost(data);
     resp.send(call);
   } catch (err) {
-    console.log("error while file upload", err);
+    // console.log("error while file upload", err);
     resp.send(err);
   }
 });
 
-router.post("/showPost", async (req, res) => {
-  console.log("req.body in showpost", req.body);
+router.post("/allPost", async (req, res) => {
+  // console.log("req.body in allpost");
   try{
-    const call = await dash.showPost(req.body);
-    // call = JSON.stringify(call)
+    const call = await dash.allPost();
+    // console.log('call', call);
+    res.send(call);
+  }
+  catch (err) {
+    res.send(err);
+  }
+});
+
+router.post("/myPost", async (req, res) => {
+  // console.log("req.body in mypost", req.body);
+  try{
+    const call = await dash.myPost(req.body);
+    // console.log('call', call);
+    res.send(call);
+  }
+  catch (err) {
+    res.send(err);
+  }
+});
+
+router.get("/singlepost/:id", async (req, res) => {
+  // console.log("req.body in singlepost",  req.params.id);
+  try{
+    const call = await dash.singlePost(req.params.id);
     console.log('call', call);
     res.send(call);
   }

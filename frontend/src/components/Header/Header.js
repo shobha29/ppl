@@ -1,26 +1,21 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
-export default function Navbar() {
-  // const [localCheck, setlocalCheck] = useState(false);
+export default function Header({value = true}) {
 
-  // const Check => {
-    
-  // }
+  const [show, setShow] = useState('none')
+  useEffect(()=>{
+    value ? setShow(''): setShow('none')
+  })
 
     return (
       <div>
         <meta charSet="utf-8" />
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
-        <link
-          href="css/bootstrap-responsive.css"
-          rel="stylesheet"
-          type="text/css"
-        />
+        
         <div className="header">
           <div className="header_lft">
             <div className="logo">
               <a href="#">
-                <img src="images/logo.png" />
+                <img src="/images/logo.png" />
               </a>
             </div>
             <div className="navigatn">
@@ -42,10 +37,9 @@ export default function Navbar() {
               </ul>
             </div>
           </div>
-          {localStorage.getItem('email') ? 
-            (<div className="header_rgt">
+            <div className="header_rgt" style={{display: show}}>
               <div className="flag_div">
-                <img src="images/flag.png" />
+                <img src="/images/flag.png" />
               </div>
               <input type="text" placeholder="Search" className="txt_box" />
               <div className="msg_box">
@@ -56,12 +50,12 @@ export default function Navbar() {
               <div className="info_div">
                 <div className="image_div">
                   
-                  <img src="images/pic.png" />
+                  <img src="/images/pic.png" />
                 </div>
                 <div className="info_div1">Me</div>
               </div>
-            </div>) : ''
-          }
+            </div>
+          
         </div>
       </div>
     );
