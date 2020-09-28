@@ -1,21 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ButtonInvite from "../../components/ButtonTimeline/ButtonInvite";
 import ButtonUpload from "../../components/ButtonTimeline/ButtonUpload";
 import Categories from "../../components/Categories/Categories";
 import Featured from "../../components/Featured/Featured";
 import Post from "../../components/Post/Post";
-import Comments from "../../components/Comments/Reply";
+import Comments from "../../components/Comments/Comments";
 import WriteComments from "../../components/Comments/WriteComment";
 import ApiCaller from "../../Utilis/ApiCaller";
 import Header from "../../components/Header/Header";
 
 export default function SinglePost(props) {
-
   // console.log("singlepost props", props.match.params);
   // console.log("singlepost props history", props.history);
 
   const [post, setPost] = useState({});
-
 
   const Logout = () => {
     localStorage.clear();
@@ -34,7 +32,7 @@ export default function SinglePost(props) {
       .catch((err) => {
         console.log("singlepost api error ", err);
       });
-  },[]);
+  }, []);
 
   // console.log('post>>>>>>>>>>>>', post);
 
@@ -50,25 +48,27 @@ export default function SinglePost(props) {
             <Featured />
           </div>
           <div className="content_lft">
-          <div className="contnt_1">
-              <div className="list_1"content>
+            <div className="contnt_1">
+              <div className="list_1" content>
                 <ul>
-                  <li><h2>Single Post</h2></li>
+                  <li>
+                    <h2>Single Post</h2>
+                  </li>
 
-                  <li style={{ float: 'right' }}>
+                  <li style={{ float: "right" }}>
                     <button className="logout" onClick={Logout}>
                       Logout
                     </button>
                   </li>
                 </ul>
               </div>
-              </div>
-            {post && post.category? <Post content={post} /> : <></>}
+            </div>
+            {post && post.category ? <Post content={post} /> : <></>}
 
             <div className="contnt_3">
               <ul>
-                <Comments />
-                <WriteComments />
+              {post.comments && post.comments.map(comment => (<Comments content={comment} />))}
+                <WriteComments {...props} />
               </ul>
               {/* <div className="view_div">
                 <a href="#">View more</a>

@@ -9,8 +9,7 @@ var postSchema = mongoose.Schema(
     description: { type: String },
     date: {type: Date},
     likes: [],
-    comments: [],
-    Flag: []
+    comments: []
   },
   { versionKey: false }
 );

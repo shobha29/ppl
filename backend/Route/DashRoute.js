@@ -69,12 +69,36 @@ router.get("/singlepost/:id", async (req, res) => {
   // console.log("req.body in singlepost",  req.params.id);
   try{
     const call = await dash.singlePost(req.params.id);
-    console.log('call', call);
+    // console.log('call', call);
     res.send(call);
   }
   catch (err) {
     res.send(err);
   }
 });
+
+router.post("/likes", async (req, res) => {
+  try{
+    const call = await dash.likes(req.body);
+    // console.log('like call', call);
+    res.send(call);
+  }
+  catch(err) {
+    res.send(err);
+  }
+})
+
+
+router.post("/comments", async (req, res) => {
+  console.log("comment dashroute", req.body);
+  try{
+    const call = await dash.comments(req.body);
+    console.log("call",call);
+    res.send(res.data);
+  }
+  catch{
+    res.send(err);
+  }
+})
 
 module.exports = router;
